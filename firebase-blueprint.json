@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "campaign": {
+      "title": "Campaign",
+      "description": "A social media campaign defining the AI influencer's strategy.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "idea": { "type": "string" },
+        "tone": { "type": "string", "enum": ["casual", "professional", "funny"] },
+        "targetAudience": { "type": "string" },
+        "frequency": { "type": "string" },
+        "preferredHours": { "type": "array" },
+        "status": { "type": "string", "enum": ["draft", "scheduled", "posted", "failed"] },
+        "generatedCaption": { "type": "string" },
+        "generatedHashtags": { "type": "string" },
+        "generatedImagePrompt": { "type": "string" },
+        "instagramPostId": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "postedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "idea", "tone", "status", "createdAt"]
+    },
+    "scheduled_post": {
+      "title": "Scheduled Post",
+      "description": "An individual post scheduled for a campaign.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "campaignId": { "type": "string" },
+        "scheduledTime": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["pending", "processing", "posted", "failed"] },
+        "retryCount": { "type": "number" },
+        "error": { "type": "string" }
+      },
+      "required": ["campaignId", "scheduledTime", "status"]
+    }
+  },
+  "firestore": {
+    "campaigns": {
+      "schema": "campaign",
+      "description": "Store application campaigns"
+    },
+    "scheduled_posts": {
+      "schema": "scheduled_post",
+      "description": "Store individual scheduled posts"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Kuan Influencer",
+  "description": "Automated social media scheduler with AI-generated captions and images, integrated with Instagram.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
